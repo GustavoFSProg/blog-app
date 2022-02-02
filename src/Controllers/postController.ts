@@ -33,11 +33,34 @@ async function register(req: Request, res: Response) {
 
 async function getAll(req: Request, res: Response) {
   try {
-    const data = await prisma.posts.findMany()
+    const { number } = req.params
+
+    const data = await prisma.posts.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
     return res.status(200).send({ data })
   } catch (error) {
     return res.status(400).send({ message: 'DEU ERRO!' })
   }
 }
 
-export default { register, getAll }
+async function getNumber(req: Request, res: Response) {
+  try {
+    const { number } = req.params
+
+    const data = await prisma.posts.findMany({
+      take: Number(number),
+      // skip: 1,
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
+    return res.status(200).send({ data })
+  } catch (error) {
+    return res.status(400).send({ message: 'DEU ERRO!' })
+  }
+}
+
+export default { register, getAll, getNumber }
