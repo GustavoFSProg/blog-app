@@ -7,6 +7,14 @@ const unlink = promisify(fs.unlink)
 
 const prisma = new PrismaClient()
 
+/**
+ * ### Description
+ * This Controller function must be retrackt a produtc
+ * This Controller function must be retrackt a produtc
+ * This Controller function must be retrackt a produtc
+ * @fucntion getAll This function must paginate the registeres
+ */
+
 async function register(req: Request, res: Response) {
   try {
     const { filename: image }: any = req.file
@@ -40,7 +48,7 @@ async function getAll(req: Request, res: Response) {
         createdAt: 'desc',
       },
     })
-    return res.status(200).send({ data })
+    return res.status(200).send(data)
   } catch (error) {
     return res.status(400).send({ message: 'DEU ERRO!' })
   }
