@@ -41,9 +41,14 @@ async function register(req: Request, res: Response) {
 
 async function getAll(req: Request, res: Response) {
   try {
-    const { number } = req.params
+    const number = 2
+
+    // const { number } = req.params
 
     const data = await prisma.posts.findMany({
+      // take: Number(number),
+      // skip: 1,
+
       orderBy: {
         createdAt: 'desc',
       },
@@ -56,7 +61,8 @@ async function getAll(req: Request, res: Response) {
 
 async function getNumber(req: Request, res: Response) {
   try {
-    const { number } = req.params
+    // const { number } = req.params
+    const number = 2
 
     const data = await prisma.posts.findMany({
       take: Number(number),
