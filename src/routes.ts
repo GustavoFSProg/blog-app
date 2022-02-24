@@ -18,7 +18,7 @@ const upload = multer(uploadConfig)
 
 const route = Router()
 
-// route.get('/get', postController.getAll)
+route.get('/get', postController.getAll)
 route.get('/', (req: Request, res: Response) => {
   res.status(200).send({ msg: 'Entrou no GET!!' })
 })
